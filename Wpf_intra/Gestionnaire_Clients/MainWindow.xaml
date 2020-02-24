@@ -24,7 +24,8 @@
             </StackPanel>
 
             <StatusBar DockPanel.Dock="Bottom" >
-                <Label Content="{Binding CurrentProduct.ShortDescription,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Client sélectionné : "/>
+                <Label Content="{Binding CurrentCustomer.Info,UpdateSourceTrigger=PropertyChanged}"/>
             </StatusBar>
 
             <Grid>
@@ -44,7 +45,7 @@
                 <ListView x:Name="listView" Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding Customers}" SelectedItem="{Binding CurrentCustomer}"  >
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text="{Binding Info}"></TextBlock>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -78,14 +79,14 @@
                     <Label Content="Contact :" VerticalAlignment="Center" Grid.Column="0" Grid.Row="4"></Label>
 
                     <Button Content="Supprimer Client" VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="4" Click="DelCust"></Button>
-                    <Image x:Name="img" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4"></Image>
-                    <TextBox x:Name="txtprenom" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"  ></TextBox>
-                    <TextBox x:Name="txtnom" VerticalAlignment="Center" Grid.Column="5" Grid.ColumnSpan="2"  ></TextBox>
-                    <TextBox x:Name="txtadres" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" ></TextBox>
-                    <TextBox x:Name="txtville" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"  Grid.ColumnSpan="3"></TextBox>
-                    <TextBox x:Name="txtprov" VerticalAlignment="Center" Grid.Column="5" Grid.Row="2" ></TextBox>
-                    <TextBox x:Name="txtpost" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"  Grid.ColumnSpan="2"></TextBox>
-                    <TextBox x:Name="txtcontact" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"  Grid.ColumnSpan="4"></TextBox>
+                    <Image x:Name="img" Grid.Column="0" Grid.Row="7"  Source="{Binding CurrentCustomer.picturepath}" Grid.ColumnSpan="4"></Image>
+                    <TextBox x:Name="txtprenom" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding CurrentCustomer.name}" ></TextBox>
+                    <TextBox x:Name="txtnom" VerticalAlignment="Center" Grid.Column="5" Grid.ColumnSpan="2"  Text="{Binding CurrentCustomer.lastname}"></TextBox>
+                    <TextBox x:Name="txtadres" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Text="{Binding CurrentCustomer.address}"></TextBox>
+                    <TextBox x:Name="txtville" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"  Grid.ColumnSpan="3" Text="{Binding CurrentCustomer.city}"></TextBox>
+                    <TextBox x:Name="txtprov" VerticalAlignment="Center" Grid.Column="5" Grid.Row="2" Text="{Binding CurrentCustomer.province}"></TextBox>
+                    <TextBox x:Name="txtpost" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"  Grid.ColumnSpan="2" Text="{Binding CurrentCustomer.postalcode}"></TextBox>
+                    <TextBox x:Name="txtcontact" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"  Grid.ColumnSpan="4" Text="{Binding CurrentCustomer.contactinfo}"></TextBox>
                 </Grid>
 
             </Grid>

@@ -89,7 +89,7 @@ namespace intra_models
                 OnPropertyChanged();
             }
         }
-
+        /*
         private void OnPropertyChanged()
         {
             throw new NotImplementedException();
@@ -98,12 +98,12 @@ namespace intra_models
         private void OnPropertyChanged(string v)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         public string Info => $"{LastName} , {Name}";
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        
         protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
