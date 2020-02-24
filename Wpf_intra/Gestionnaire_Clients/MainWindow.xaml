@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gestionnaire_Clients"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         mc:Ignorable="d"
         Title="Gestion de clients" Height="450" Width="800">
     <Grid>
@@ -11,6 +12,11 @@
             <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
                 <Menu>
                     <MenuItem Header="_Fichier">
+                            <MenuItem Header="Ouvrir" ></MenuItem>
+                            <MenuItem Header="Sauvergarder" ></MenuItem>
+                            <MenuItem Header="Fermer" ></MenuItem>
+                            <MenuItem Header="Nouveau Client" Click="AddCust"></MenuItem>
+                            <MenuItem Header="Quitter" ></MenuItem>
                     </MenuItem>
                     <MenuItem Header="Edition"></MenuItem>
                     <MenuItem Header="Affichage"></MenuItem>
@@ -33,12 +39,12 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Grid.Row="0" Content="Liste de produits"></Label>
-                    <Button Content="Nouveau Client" Margin="5"/>
+                    <Button Content="Nouveau Client" Margin="5" Click="AddCust"/>
                 </StackPanel>
-                <ListView x:Name="listView" Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}" SelectionChanged="ListView_SelectionChanged" >
+                <ListView x:Name="listView" Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding Customers}" SelectedItem="{Binding CurrentCustomer}"  >
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Info}"></TextBlock>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -71,7 +77,8 @@
                     <Label Content="CodePostal :" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"></Label>
                     <Label Content="Contact :" VerticalAlignment="Center" Grid.Column="0" Grid.Row="4"></Label>
 
-                    <Button Content="Supprimer Client" VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="4" Click="Button_Click" ></Button>
+                    <Button Content="Supprimer Client" VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="4" Click="DelCust"></Button>
+                    <Image x:Name="img" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4"></Image>
                     <TextBox x:Name="txtprenom" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"  ></TextBox>
                     <TextBox x:Name="txtnom" VerticalAlignment="Center" Grid.Column="5" Grid.ColumnSpan="2"  ></TextBox>
                     <TextBox x:Name="txtadres" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" ></TextBox>

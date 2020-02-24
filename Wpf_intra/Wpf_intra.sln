@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "intra_models", "intra_models\intra_models.csproj", "{71EA0B67-3C55-49D5-9D5C-00F8D8CD731D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gestionnaire_Clients", "Gestionnaire_Clients\Gestionnaire_Clients.csproj", "{490CA1D9-673F-40BE-98BF-5D74EBAD51EE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71EA0B67-3C55-49D5-9D5C-00F8D8CD731D} = {71EA0B67-3C55-49D5-9D5C-00F8D8CD731D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
