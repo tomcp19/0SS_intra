@@ -7,6 +7,82 @@
         mc:Ignorable="d"
         Title="Gestion de clients" Height="450" Width="800">
     <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+                <Menu>
+                    <MenuItem Header="_Fichier">
+                    </MenuItem>
+                    <MenuItem Header="Edition"></MenuItem>
+                    <MenuItem Header="Affichage"></MenuItem>
+                </Menu>
+            </StackPanel>
 
+            <StatusBar DockPanel.Dock="Bottom" >
+                <Label Content="{Binding CurrentProduct.ShortDescription,UpdateSourceTrigger=PropertyChanged}"/>
+            </StatusBar>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Grid.Row="0" Content="Liste de produits"></Label>
+                    <Button Content="Nouveau Client" Margin="5"/>
+                </StackPanel>
+                <ListView x:Name="listView" Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding Products}" SelectedItem="{Binding CurrentProduct}" SelectionChanged="ListView_SelectionChanged" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Info}"></TextBlock>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid Grid.RowSpan="2" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="6*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="Prenom : " VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"></Label>
+                    <Label Content="Nom : " VerticalAlignment="Center" Grid.Column="4" Grid.Row="0"></Label>
+                    <Label Content="Adresse : " VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"></Label>
+                    <Label Content="Ville : " VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"></Label>
+                    <Label Content="Province :" VerticalAlignment="Center" Grid.Column="4" Grid.Row="2"></Label>
+                    <Label Content="CodePostal :" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"></Label>
+                    <Label Content="Contact :" VerticalAlignment="Center" Grid.Column="0" Grid.Row="4"></Label>
+
+                    <Button Content="Supprimer Client" VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="4" Click="Button_Click" ></Button>
+                    <TextBox x:Name="txtprenom" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"  ></TextBox>
+                    <TextBox x:Name="txtnom" VerticalAlignment="Center" Grid.Column="5" Grid.ColumnSpan="2"  ></TextBox>
+                    <TextBox x:Name="txtadres" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" ></TextBox>
+                    <TextBox x:Name="txtville" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"  Grid.ColumnSpan="3"></TextBox>
+                    <TextBox x:Name="txtprov" VerticalAlignment="Center" Grid.Column="5" Grid.Row="2" ></TextBox>
+                    <TextBox x:Name="txtpost" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"  Grid.ColumnSpan="2"></TextBox>
+                    <TextBox x:Name="txtcontact" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"  Grid.ColumnSpan="4"></TextBox>
+                </Grid>
+
+            </Grid>
+
+        </DockPanel>
     </Grid>
 </Window>
